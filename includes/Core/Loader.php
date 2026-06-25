@@ -4,22 +4,26 @@ declare(strict_types=1);
 
 namespace Lutowiska\Noclegi\Core;
 
-use Lutowiska\Noclegi\PostTypes\AccommodationPostType;
-use Lutowiska\Noclegi\Taxonomies\LocationTaxonomy;
-use Lutowiska\Noclegi\Taxonomies\ObjectTypeTaxonomy;
-
-defined('ABSPATH') || exit;
+use Lutowiska\Noclegi\Core\Contracts\BootableInterface;
 
 final class Loader
 {
+    /**
+     * @var BootableInterface[]
+     */
+    private array $services = [];
+
+    public function add(BootableInterface $service): self
+    {
+        $this->services[] = $service;
+
+        return $this;
+    }
+
     public function boot(): void
     {
-        (new Assets())->boot();
-
-        (new AccommodationPostType())->boot();
-
-        (new LocationTaxonomy())->boot();
-
-        (new ObjectTypeTaxonomy())->boot();
+        foreach ($this->services as $service) {
+            $service->boot();
+        }
     }
 }
