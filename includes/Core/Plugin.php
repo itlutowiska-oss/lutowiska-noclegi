@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Lutowiska\Noclegi\Core;
 
-defined('ABSPATH') || exit;
+use Lutowiska\Noclegi\Admin\Diagnostics;
+use Lutowiska\Noclegi\Admin\Settings;
+use Lutowiska\Noclegi\PostTypes\AccommodationPostType;
+use Lutowiska\Noclegi\Taxonomies\LocationTaxonomy;
+use Lutowiska\Noclegi\Taxonomies\ObjectTypeTaxonomy;
 
 final class Plugin
 {
-    private static ?Plugin $instance = null;
+    private static ?self $instance = null;
 
     private Loader $loader;
 
     public static function instance(): self
     {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
+        return self::$instance ??= new self();
     }
 
     private function __construct()
@@ -28,6 +28,13 @@ final class Plugin
 
     public function boot(): void
     {
-        $this->loader->boot();
+        $this->loader
+            ->add(new Assets())
+            ->add(new Settings())
+            ->add(new Diagnostics())
+            ->add(new AccommodationPostType())
+            ->add(new LocationTaxonomy())
+            ->add(new ObjectTypeTaxonomy())
+            ->boot();
     }
 }
