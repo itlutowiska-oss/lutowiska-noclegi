@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Lutowiska\Noclegi\Core;
+
+defined('ABSPATH') || exit;
+
+final class Plugin
+{
+    private static ?Plugin $instance = null;
+
+    private Loader $loader;
+
+    public static function instance(): self
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    private function __construct()
+    {
+        $this->loader = new Loader();
+    }
+
+    public function boot(): void
+    {
+        $this->loader->boot();
+    }
+}
