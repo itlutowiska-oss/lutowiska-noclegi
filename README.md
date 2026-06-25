@@ -14,14 +14,4 @@ Professional WordPress plugin for accommodation listings in Lutowiska.
 - Custom post types and taxonomies only.
 - No ACF, CPT UI, or Filter Everything dependency.
 - PSR-12 structure with WordPress Coding Standards.
-- Small services registered through a single plugin kernel.
-
-## Current scope
-
-The first core commit introduces:
-
-- plugin bootstrap,
-- PSR-4 autoload configuration,
-- service registration contract,
-- custom accommodation post type,
-- accommodation-related taxonomies.
+- Small, logical changes with a stable plugin core.

@@ -3,7 +3,8 @@
     <description>WordPress Coding Standards for the Lutowiska Noclegi plugin.</description>
 
     <file>lutowiska-noclegi.php</file>
-    <file>src</file>
+    <file>includes</file>
+    <file>templates</file>
 
     <arg name="extensions" value="php"/>
     <arg name="parallel" value="8"/>
@@ -21,7 +22,7 @@
 
     <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
         <properties>
-            <property name="prefixes" type="array" value="lutowiska_noclegi,LutowiskaNoclegi"/>
+            <property name="prefixes" type="array" value="ln,LN,Lutowiska"/>
         </properties>
     </rule>
 </ruleset>
