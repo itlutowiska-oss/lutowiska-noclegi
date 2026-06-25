@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ruleset name="Lutowiska Noclegi">
+    <description>WordPress Coding Standards for the Lutowiska Noclegi plugin.</description>
+
+    <file>lutowiska-noclegi.php</file>
+    <file>src</file>
+
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+
+    <config name="testVersion" value="8.1-"/>
+
+    <rule ref="WordPress"/>
+    <rule ref="WordPress-Extra"/>
+    <rule ref="WordPress-Docs"/>
+    <rule ref="PHPCompatibilityWP"/>
+
+    <rule ref="WordPress.Files.FileName">
+        <exclude-pattern>lutowiska-noclegi.php</exclude-pattern>
+    </rule>
+
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array" value="lutowiska_noclegi,LutowiskaNoclegi"/>
+        </properties>
+    </rule>
+</ruleset>
